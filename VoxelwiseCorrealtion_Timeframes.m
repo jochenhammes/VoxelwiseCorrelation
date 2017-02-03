@@ -104,8 +104,8 @@ for h = 1:size(subjects,1)
     currentStopTime = h*60;
     
     title([num2str(currentStartTime) 's-' num2str(currentStopTime) 's']);
-    xlabel('AV 1451');
-    ylabel('FDG');
+    ylabel('AV 1451');
+    xlabel('FDG');
     t = text(1000,1000,['r=' num2str(round(currentCorrCoeff,3))]);
     
     %Save data to struct
@@ -171,8 +171,8 @@ for l = 1:size(listOfSums,1)
     currentStopTime = listOfSums(l,2)*60;
     
     title([num2str(currentStartTime) 's-' num2str(currentStopTime) 's']);
-    xlabel('AV 1451');
-    ylabel('FDG');
+    ylabel('AV 1451');
+    xlabel('FDG');
     t = text(1000,2000,['r=' num2str(round(currentCorrCoeff,3))]);
     
     
