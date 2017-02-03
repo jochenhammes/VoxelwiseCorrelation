@@ -55,7 +55,9 @@ for h = 1:size(subjects,1)
 end
 
 %% Analyze single Timeframes
-l=0
+
+l=0;
+
 for h = 1:size(subjects,1)
     
     disp(h);
@@ -79,8 +81,11 @@ for h = 1:size(subjects,1)
     %Create subplot for each Timeslice
     subplotList(h+l) = subplot(numberOfFigureRows, numberOfFigureCols,h+l);
     scatter(voxelValues(:,1),voxelValues(:,2), '.');
+    xlim([0 30000]);
+    %ylim([0 35000]);
+    
+    
     [R, P] = corrcoef(voxelValues(:,1),voxelValues(:,2));
-        
     currentCorrCoeff = R(1,2);
     currentCorrP = P(1,2);
     
@@ -98,9 +103,10 @@ for h = 1:size(subjects,1)
     currentStartTime = (h-1)*60;
     currentStopTime = h*60;
     
-    title([num2str(currentStartTime) 's-' num2str(currentStopTime) 's r=' num2str(currentCorrCoeff) ])
-    xlabel('AV 1451')
-    ylabel('FDG')
+    title([num2str(currentStartTime) 's-' num2str(currentStopTime) 's']);
+    xlabel('AV 1451');
+    ylabel('FDG');
+    t = text(1000,1000,['r=' num2str(round(currentCorrCoeff,3))]);
     
     %Save data to struct
     Correlations(h+l).StartTime = currentStartTime;
@@ -143,8 +149,10 @@ for l = 1:size(listOfSums,1)
     %Create sublot for each  sumImage
     subplotList(h+l) = subplot(numberOfFigureRows, numberOfFigureCols,h+l);
     scatter(voxelValues(:,1),voxelValues(:,2), '.');
-    [R, P] = corrcoef(voxelValues(:,1),voxelValues(:,2));
+    xlim([0 30000]);
     
+    
+    [R, P] = corrcoef(voxelValues(:,1),voxelValues(:,2));
     currentCorrCoeff = R(1,2);
     currentCorrP = P(1,2);
         
@@ -162,10 +170,12 @@ for l = 1:size(listOfSums,1)
     currentStartTime = (listOfSums(l,1)-1)*60;
     currentStopTime = listOfSums(l,2)*60;
     
-    title([num2str(currentStartTime) 's-' num2str(currentStopTime) 's r=' num2str(currentCorrCoeff) ])
-        
-    xlabel('AV 1451')
-    ylabel('FDG')
+    title([num2str(currentStartTime) 's-' num2str(currentStopTime) 's']);
+    xlabel('AV 1451');
+    ylabel('FDG');
+    t = text(1000,2000,['r=' num2str(round(currentCorrCoeff,3))]);
+    
+    
 
     %Save data to struct
     Correlations(h+l).StartTime = currentStartTime;
@@ -178,7 +188,4 @@ for l = 1:size(listOfSums,1)
  
     
 end
-
-
-
 
