@@ -55,7 +55,7 @@ for h = 1:size(subjects,1)
 end
 
 %% Analyze single Timeframes
-
+l=0
 for h = 1:size(subjects,1)
     
     %run through all voxels of both images
@@ -90,10 +90,11 @@ for h = 1:size(subjects,1)
     ylabel('FDG')
     
     %Save data to struct
-    Correlations(h).StartTime = currentStartTime;
-    Correlations(h).StopTime = currentStopTime;
-    Correlations(h).currentCorrCoeff = currentCorrCoeff;
-    Correlations(h).currentCorrP = currentCorrP;
+    Correlations(h+l).StartTime = currentStartTime;
+    Correlations(h+l).StopTime = currentStopTime;
+    Correlations(h+l).CorrCoeff = currentCorrCoeff;
+    Correlations(h+l).CorrP = currentCorrP;
+    Correlations(h+l).CorrFisherZ = fisherz(currentCorrCoeff);
     
 end
 
@@ -143,8 +144,10 @@ for l = 1:size(listOfSums,1)
     %Save data to struct
     Correlations(h+l).StartTime = currentStartTime;
     Correlations(h+l).StopTime = currentStopTime;
-    Correlations(h+l).currentCorrCoeff = currentCorrCoeff;
-    Correlations(h+l).currentCorrP = currentCorrP;
+    Correlations(h+l).CorrCoeff = currentCorrCoeff;
+    Correlations(h+l).CorrP = currentCorrP;
+    Correlations(h+l).CorrFisherZ = fisherz(currentCorrCoeff);
+    
     
 end
 
