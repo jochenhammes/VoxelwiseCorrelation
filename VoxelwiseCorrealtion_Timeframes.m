@@ -5,17 +5,30 @@ clear all
 %Define Output Figure
 numberOfFigureCols = 5;
 numberOfFigureRows = 3;
+
+% Unit of Size are Voxels. In MNI Space with 79x95x78-matrix, one voxel is 2mm.
+smoothingSize = [5 5 5]; 
+
 figure
 
 
 %% Filepaths: Find images
-pathImage1 = '/Volumes/MMNI_RAID/RAID_MMNI/Tau-Perfusion/SampleData/ReuschKlaus/FDG/wFDG-ReKl.nii';
+pathImage1 = '/Users/hammesj/Downloads/Tau_RAW_abNov2016/ReuschKlaus/FDG/wFDG-ReKl.nii';
 pathImage2 = '/Volumes/MMNI_RAID/RAID_MMNI/Tau-Perfusion/SampleData/ReuschKlaus/Tau_früh/Full/wrTau_early_ReKl_1.nii';
 
-pathSubjectNormalized = '/Volumes/MMNI_RAID/RAID_MMNI/Tau-Perfusion/SampleData/ReuschKlaus/Tau_früh/Full/';
+pathSubjectNormalized = '/Users/hammesj/Downloads/Tau_RAW_abNov2016/ReuschKlaus/Tau_früh/Full/';
 subjects = dir(strcat(pathSubjectNormalized,'wrTau_early*.nii'));
 
-pathGreyMatterMask = '/Volumes/MMNI_RAID/RAID_MMNI/Templates/spm_grey_79x95x78.nii';
+pathGreyMatterMask = '/Users/hammesj/Downloads/Tau_RAW_abNov2016/Template/spm_grey_79x95x78.nii';
+
+% %% Filepaths: Find images
+% pathImage1 = '/Volumes/MMNI_RAID/RAID_MMNI/Tau-Perfusion/SampleData/ReuschKlaus/FDG/wFDG-ReKl.nii';
+% pathImage2 = '/Volumes/MMNI_RAID/RAID_MMNI/Tau-Perfusion/SampleData/ReuschKlaus/Tau_früh/Full/wrTau_early_ReKl_1.nii';
+% 
+% pathSubjectNormalized = '/Volumes/MMNI_RAID/RAID_MMNI/Tau-Perfusion/SampleData/ReuschKlaus/Tau_früh/Full/';
+% subjects = dir(strcat(pathSubjectNormalized,'wrTau_early*.nii'));
+% 
+% pathGreyMatterMask = '/Volumes/MMNI_RAID/RAID_MMNI/Templates/spm_grey_79x95x78.nii';
 
 %% Load images
 image1 = load_nii(pathImage1);
@@ -34,7 +47,12 @@ imageDimensions = size(image1.img);
 voxelValues = zeros(nnz(greyMatterMask.img),2);
 %voxelValues = zeros(numel(image1.img),2);
 
+%% Smooth images
+image1.img = smooth3(image1.img,'box',smoothingSize);
 
+for h = 1:size(subjects,1)
+    images2(h).img = smooth3(images2(h).img,'box',smoothingSize);
+end
 
 %% Analyze single Timeframes
 
