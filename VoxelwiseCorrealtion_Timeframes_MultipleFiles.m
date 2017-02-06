@@ -13,12 +13,15 @@ smoothingSize = [5 5 5];
 
 %% Filepaths: Find images
 pathGreyMatterMask = '/Users/hammesj/Downloads/Tau_RAW_abNov2016/Template/spm_grey_79x95x78.nii';
+pathAtlas = '/Users/hammesj/Downloads/Tau_RAW_abNov2016/Template/Hammers_mith_concatenatedRegions_79x95_78.nii';
 
 
 paths{1,1} = '/Users/hammesj/Downloads/Tau_RAW_abNov2016/ReuschKlaus/FDG/wFDG-ReKl.nii';
 paths{1,2} = '/Users/hammesj/Downloads/Tau_RAW_abNov2016/ReuschKlaus/Tau_früh/Full/';
-paths{2,1} = '/Users/hammesj/Downloads/Tau_RAW_abNov2016/ReuschKlaus/FDG/wFDG-ReKl.nii';
-paths{2,2} = '/Users/hammesj/Downloads/Tau_RAW_abNov2016/ReuschKlaus/Tau_früh/Full/';
+% paths{2,1} = '/Users/hammesj/Downloads/Tau_RAW_abNov2016/ReuschKlaus/FDG/wFDG-ReKl.nii';
+% paths{2,2} = '/Users/hammesj/Downloads/Tau_RAW_abNov2016/ReuschKlaus/Tau_früh/Full/';
+% paths{3,1} = '/Users/hammesj/Downloads/Tau_RAW_abNov2016/ReuschKlaus/FDG/wFDG-ReKl.nii';
+% paths{3,2} = '/Users/hammesj/Downloads/Tau_RAW_abNov2016/ReuschKlaus/Tau_früh/Full/';
 
 for subjectCounter = 1:size(paths,1)
     
@@ -72,10 +75,12 @@ for subjectCounter = 1:size(paths,1)
             for j = 1:imageDimensions(2)
                 for k = 1:imageDimensions(3)
                     
-                    if greyMatterMask.img(i,j,k) %Apply gray matter mask
+                    if greyMatterMask.img(i,j,k) %Apply gray matter mask                
                         elementCounter = elementCounter +1;
                         voxelValues(elementCounter, 1) = image1.img(i,j,k);
                         voxelValues(elementCounter, 2) = images2(h).img(i,j,k);
+                        
+                       
                     end
                     
                 end
@@ -185,7 +190,6 @@ for subjectCounter = 1:size(paths,1)
         ylabel('AV 1451');
         xlabel('FDG');
         t = text(1000,2000,['r=' num2str(round(currentCorrCoeff,3))]);
-        
         
         
         %Save data to struct
