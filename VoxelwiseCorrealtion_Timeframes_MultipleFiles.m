@@ -16,13 +16,10 @@ pathGreyMatterMask = '/Volumes/MMNI_RAID/RAID_MMNI/Templates/spm_grey_79x95x78.n
 pathAtlas = '/Users/hammesj/Downloads/Tau_RAW_abNov2016/Template/Hammers_mith_concatenatedRegions_79x95_78.nii';
 
 
-paths{1,1} = '/Volumes/MMNI_RAID/RAID_MMNI/Tau-Perfusion/SampleData/ReuschKlaus/FDG/wFDG-ReKl.nii';
-paths{1,2} = '/Volumes/MMNI_RAID/RAID_MMNI/Tau-Perfusion/SampleData/ReuschKlaus/Tau_früh/Full/';
-paths{2,1} = '/Volumes/MMNI_RAID/RAID_MMNI/Tau-Perfusion/SampleData/EbenhanFrank/FDG/wFDG_EbFr.nii';
-paths{2,2} = '/Volumes/MMNI_RAID/RAID_MMNI/Tau-Perfusion/SampleData/EbenhanFrank/Tau_früh/Full/';
-paths{3,1} = '/Volumes/MMNI_RAID/RAID_MMNI/Tau-Perfusion/SampleData/Sander_Peter_IL/FDG/wFDG_SaPe.nii';
-paths{3,2} = '/Volumes/MMNI_RAID/RAID_MMNI/Tau-Perfusion/SampleData/Sander_Peter_IL/Tau_frueh/full/';
+pathsToPerfusionStudyFiles;
 
+
+%for subjectCounter = 8:8
 for subjectCounter = 1:size(paths,1)
     
     %Prepare new figure window for current Subject
@@ -33,7 +30,7 @@ for subjectCounter = 1:size(paths,1)
     
     %extract filename of first entry of currentSubjects to save as
     %patient-identifier
-    currentPatientID = currentSubjects(subjectCounter).name;
+    currentPatientID = currentSubjects(1).name;
     figureList(subjectCounter).Name = currentPatientID;
     
     
@@ -136,7 +133,7 @@ for subjectCounter = 1:size(paths,1)
     %% Analyze Sum-Images
     
     sumImage = image1;
-    listOfSums = [2 3; 3 4; 4 5; 3 5; 5 6];
+    listOfSums = [2 3; 2 4; 2 5; 3 5; 3 6];
     
     for l = 1:size(listOfSums,1)
         
@@ -144,7 +141,12 @@ for subjectCounter = 1:size(paths,1)
         disp(h+l);
         
         %Create Current Sum-Image based on listOfSums
-        sumImage.img = images2(listOfSums(l,1)).img + images2(listOfSums(l,2)).img;
+        %sumImage.img = images2(listOfSums(l,1)).img + images2(listOfSums(l,2)).img;
+        
+        sumImage.img = images2(listOfSums(l,1)).img; %start with first image
+        for m = (listOfSums(l,1)+1):listOfSums(l,2) %add all the images in between consecutively
+            sumImage.img = sumImage.img + images2(m).img;
+        end
         
         elementCounter = 0;
         
