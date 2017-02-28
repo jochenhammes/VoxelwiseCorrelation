@@ -22,3 +22,5 @@ paths{11,1} = '/Volumes/MMNI_RAID/RAID_MMNI/Tau-Perfusion/SampleData/WernitzVolk
 paths{11,2} = '/Volumes/MMNI_RAID/RAID_MMNI/Tau-Perfusion/SampleData/WernitzVolkmar/TAU_frueh/full/';
 paths{12,1} = '/Volumes/MMNI_RAID/RAID_MMNI/Tau-Perfusion/SampleData/MoellerHildegard/FDG/wFDG_MoHi.nii';
 paths{12,2} = '/Volumes/MMNI_RAID/RAID_MMNI/Tau-Perfusion/SampleData/MoellerHildegard/Tau_frueh/full/';
+paths{13,1} = '/Volumes/MMNI_RAID/RAID_MMNI/Tau-Perfusion/SampleData/EsserEdith/FDG/wFDG_EsEd.nii';
+paths{13,2} = '/Volumes/MMNI_RAID/RAID_MMNI/Tau-Perfusion/SampleData/EsserEdith/Tau_frueh/full/';

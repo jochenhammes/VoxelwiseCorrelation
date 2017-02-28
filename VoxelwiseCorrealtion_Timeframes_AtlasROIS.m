@@ -39,8 +39,8 @@ outputEntryCounter = 0;
 for subjectCounter = 1:size(paths,1)
     
     %Prepare new figure window for current Subject
-    %figureList(subjectCounter) = figure;
-    %figure(figureList(subjectCounter));
+%     figureList(subjectCounter) = figure;
+%     figure(figureList(subjectCounter));
     
     currentSubjects = dir(strcat(paths{subjectCounter,2},'wrTau_early*.nii'));
     
@@ -77,7 +77,8 @@ for subjectCounter = 1:size(paths,1)
     %% Analyze Images (single timeframes and sums)
     
     sumImage = image1;
-    listOfSummedFrames = [1 1; 2 2; 3 3; 4 4 ; 5 5; 6 6; 7 7 ; 8 8; 9 9; 10 10; ;2 3; 2 4; 2 5; 3 5; 3 6];
+    listOfSummedFrames = [1 1; 1 2; 1 3; 1 4; 1 5; 1 6; 1 7; 1 8; 1 9; 1 10; 2 2; 3 3; 4 4 ; 5 5; 6 6; 7 7 ; 8 8; 9 9; 10 10; ;2 3; 2 4; 2 5; 2 6; 2 7; 2 8; 2 9; 2 10; 3 4; 3 5; 3 6; 3 7; 3 8; 3 9; 3 10; 4 5; 4 6 ; 4 7; 4 8; 4 9; 4 10; 5 6; 5 7; 5 8; 5 9; 5 10; 6 7; 6 8; 6 9; 6 10; 7 8; 7 9; 7 10; 8 9; 8 10; 9 10];
+    %listOfSummedFrames = [1 1; 2 2; 3 3; 4 4 ; 5 5; 6 6; 7 7 ; 8 8; 9 9; 10 10; 2 3; 2 4; 2 5; 3 4; 3 5];
     
     for VOICounter = 1:length(VOINames)
         
@@ -89,7 +90,7 @@ for subjectCounter = 1:size(paths,1)
     
         %prepare Variable voxelValues for individual calculation of correlation coefficient
         clear voxelValues
-        voxelValues = zeros(nnz(greyMatterMask.img),2);
+        voxelValues = zeros(nnz(currentVOIMask),2);
         
         for l = 1:size(listOfSummedFrames,1)
             
@@ -172,3 +173,6 @@ for subjectCounter = 1:size(paths,1)
     end
     
 end
+
+
+writetable(struct2table(Correlations), [pwd '/VoxelwiseCorrelations.csv']);
