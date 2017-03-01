@@ -1,0 +1,440 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<VinciXMLXchange>
+    <Version>Vinci 4.71.0.17874, February 2 2017</Version>
+    <!-- Optional information on this Vinci Project -->
+    <ProjectInfo>
+        <TimeStamp>Mar 01 2017, 11:35:21</TimeStamp>
+        <OriginalFilename>/Volumes/MMNI_RAID/RAID_MMNI/BatchScriptsMatlab/VoxelwiseCorrelation/BetweenSubjCorrelationP.vpx</OriginalFilename>
+        <StartSession/>
+        <User>hammesj</User>
+        <Host>unknown</Host>
+        <ProjectDir>/Volumes/MMNI_RAID/RAID_MMNI/BatchScriptsMatlab/VoxelwiseCorrelation</ProjectDir>
+    </ProjectInfo>
+    <!-- Vinci main window position, default: maximized -->
+    <ParameterSection>
+        <Target>::</Target>
+        <SetWindowPos>ShowMaximized</SetWindowPos>
+    </ParameterSection>
+    <!-- Optional Toolbar settings -->
+    <!-- Create Vinci Log -->
+    <ParameterSection>
+        <Target>::</Target>
+        <New>
+            <Unique>
+                <Type>LogView</Type>
+            </Unique>
+            <Create>
+                <SetWindowPos>3 3 602 659</SetWindowPos>
+            </Create>
+            <Action>
+                <SetWindowPos>3 3 602 659</SetWindowPos>
+            </Action>
+        </New>
+    </ParameterSection>
+    <!-- Create project -->
+    <ParameterSection>
+        <Target>::</Target>
+        <New>
+            <Target>
+                <Type>Project</Type>
+                <Path><GetProjectPath/></Path>
+            </Target>
+        </New>
+    </ParameterSection>
+    <!-- generate loadview -->
+    <ParameterSection>
+        <Target>::</Target>
+        <Use>
+            <Current>
+                <Type>Project</Type>
+            </Current>
+            <Action>
+                <New>
+                    <Unique>
+                        <Type>LoadView</Type>
+                    </Unique>
+                    <Create>
+                        <SetWindowPos>50 50</SetWindowPos>
+                    </Create>
+                </New>
+            </Action>
+        </Use>
+    </ParameterSection>
+    <!-- generate images -->
+    <ParameterSection>
+        <Target>::</Target>
+        <Use>
+            <Current>
+                <Type>Project</Type>
+            </Current>
+            <Action>
+                <New>
+                    <Target>
+                        <Type>Image</Type>
+                        <Name>Image [0]</Name>
+                    </Target>
+                    <Create>
+                        <File>BetweenSubjCorrelationP.nii</File>
+                        <ImageID>0</ImageID>
+                        <TimeStamp>Feb 28 2017, 13:00:20</TimeStamp>
+                        <PluginTitle>NIfTI Image</PluginTitle>
+                        <PluginVersion>1.10</PluginVersion>
+                        <PluginVersionDate>October 6 2014</PluginVersionDate>
+                        <PluginSettings>
+                            <FrameMode>Single</FrameMode>
+                            <StartFrame>1</StartFrame>
+                            <EndFrame>1</EndFrame>
+                            <StartComponent>1</StartComponent>
+                            <EndComponent>1</EndComponent>
+                            <Orientation>
+                                <Name>Use image inherent orientation</Name>
+                            </Orientation>
+                        </PluginSettings>
+                        <ImageSettings>
+                            <ColorSettings>
+                                <CTableName>Gray</CTableName>
+                                <StretchBottom>0</StretchBottom>
+                                <StretchTop>100</StretchTop>
+                                <Gamma>1.000000</Gamma>
+                                <DisplayMin>0.000000</DisplayMin>
+                                <DisplayMax>0.999939</DisplayMax>
+                            </ColorSettings>
+                            <Reslice>
+                                <RotAngles>0 0 0</RotAngles>
+                                <RotCenter>0 0 0</RotCenter>
+                                <Offset>0 0 0</Offset>
+                                <SmplDimension>256 256 256</SmplDimension>
+                                <SmplPixelSize>1 1 1</SmplPixelSize>
+                                <Pos>127.5 127.5 127.5</Pos>
+                            </Reslice>
+                            <OtherSettings>
+                                <SetMatrixSize_xyz>256 256 256</SetMatrixSize_xyz>
+                                <SetLocked>Off</SetLocked>
+                                <SamplingDim_xyz>256 256 256</SamplingDim_xyz>
+                                <SetSampling3D>Trilinear</SetSampling3D>
+                            </OtherSettings>
+                        </ImageSettings>
+                    </Create>
+                    <Action>
+                        <SetSyncChannel>Red</SetSyncChannel>
+                        <SetCutSyncOnly>Off</SetCutSyncOnly>
+                    </Action>
+                </New>
+                <New>
+                    <Target>
+                        <Type>Image</Type>
+                        <Name>Image [1]</Name>
+                    </Target>
+                    <Create>
+                        <File>BetweenSubjCorrelationR.nii</File>
+                        <ImageID>1</ImageID>
+                        <TimeStamp>Feb 28 2017, 13:00:20</TimeStamp>
+                        <PluginTitle>NIfTI Image</PluginTitle>
+                        <PluginVersion>1.10</PluginVersion>
+                        <PluginVersionDate>October 6 2014</PluginVersionDate>
+                        <PluginSettings>
+                            <FrameMode>Single</FrameMode>
+                            <StartFrame>1</StartFrame>
+                            <EndFrame>1</EndFrame>
+                            <StartComponent>1</StartComponent>
+                            <EndComponent>1</EndComponent>
+                            <Orientation>
+                                <Name>Use image inherent orientation</Name>
+                            </Orientation>
+                        </PluginSettings>
+                        <ImageSettings>
+                            <ColorSettings>
+                                <CTableName>Rainbow4</CTableName>
+                                <StretchBottom>0</StretchBottom>
+                                <StretchTop>100</StretchTop>
+                                <Gamma>1.000000</Gamma>
+                                <DisplayMin>0.000000</DisplayMin>
+                                <DisplayMax>0.991290</DisplayMax>
+                            </ColorSettings>
+                            <Reslice>
+                                <RotAngles>0 0 0</RotAngles>
+                                <RotCenter>0 0 0</RotCenter>
+                                <Offset>0 0 0</Offset>
+                                <SmplDimension>256 256 256</SmplDimension>
+                                <SmplPixelSize>1 1 1</SmplPixelSize>
+                                <Pos>127.5 127.5 127.5</Pos>
+                            </Reslice>
+                            <OtherSettings>
+                                <SetMatrixSize_xyz>256 256 256</SetMatrixSize_xyz>
+                                <SetLocked>Off</SetLocked>
+                                <SamplingDim_xyz>256 256 256</SamplingDim_xyz>
+                                <SetSampling3D>Trilinear</SetSampling3D>
+                            </OtherSettings>
+                        </ImageSettings>
+                    </Create>
+                    <Action>
+                        <SetSyncChannel>Red</SetSyncChannel>
+                        <SetCutSyncOnly>Off</SetCutSyncOnly>
+                    </Action>
+                </New>
+                <New>
+                    <Target>
+                        <Type>Image</Type>
+                        <Name>Image [2]</Name>
+                    </Target>
+                    <Create>
+                        <File>../../Software/mricron_win/templates/ch2.nii</File>
+                        <ImageID>2</ImageID>
+                        <TimeStamp>Feb 28 2017, 13:00:29</TimeStamp>
+                        <PluginTitle>NIfTI Image</PluginTitle>
+                        <PluginVersion>1.10</PluginVersion>
+                        <PluginVersionDate>October 6 2014</PluginVersionDate>
+                        <PluginSettings>
+                            <FrameMode>Single</FrameMode>
+                            <StartFrame>1</StartFrame>
+                            <EndFrame>1</EndFrame>
+                            <StartComponent>1</StartComponent>
+                            <EndComponent>1</EndComponent>
+                            <Orientation>
+                                <Name>Use image inherent orientation</Name>
+                            </Orientation>
+                        </PluginSettings>
+                        <ImageSettings>
+                            <ColorSettings>
+                                <CTableName>Gray</CTableName>
+                                <StretchBottom>0</StretchBottom>
+                                <StretchTop>100</StretchTop>
+                                <Gamma>1.000000</Gamma>
+                                <DisplayMin>0.000000</DisplayMin>
+                                <DisplayMax>254.000000</DisplayMax>
+                            </ColorSettings>
+                            <Reslice>
+                                <RotAngles>0 0 0</RotAngles>
+                                <RotCenter>0 0 0</RotCenter>
+                                <Offset>0 0 0</Offset>
+                                <SmplDimension>256 256 256</SmplDimension>
+                                <SmplPixelSize>1 1 1</SmplPixelSize>
+                                <Pos>127.5 127.5 127.5</Pos>
+                            </Reslice>
+                            <OtherSettings>
+                                <SetMatrixSize_xyz>256 256 256</SetMatrixSize_xyz>
+                                <SetLocked>Off</SetLocked>
+                                <SamplingDim_xyz>256 256 256</SamplingDim_xyz>
+                                <SetSampling3D>Trilinear</SetSampling3D>
+                            </OtherSettings>
+                        </ImageSettings>
+                    </Create>
+                    <Action>
+                        <SetSyncChannel>Red</SetSyncChannel>
+                        <SetCutSyncOnly>Off</SetCutSyncOnly>
+                    </Action>
+                </New>
+            </Action>
+        </Use>
+    </ParameterSection>
+    <!-- generate OrthoViews -->
+    <ParameterSection>
+        <Target>::</Target>
+        <Use>
+            <Current>
+                <Type>Project</Type>
+            </Current>
+            <Action>
+                <New>
+                    <Target>
+                        <Type>OrthoView</Type>
+                        <Name>OrthoView</Name>
+                    </Target>
+                    <Create>
+                        <SetWindowPos>ShowMaximized</SetWindowPos>
+                        <NRows_Standard>4</NRows_Standard>
+                        <DisplaySize_Standard>256 256 256</DisplaySize_Standard>
+                        <OffsetImageBuffer>0</OffsetImageBuffer>
+                    </Create>
+                    <Action>
+                        <SetWindowPos>ShowMaximized</SetWindowPos>
+                        <Use>
+                            <Target>
+                                <Type>OrthoDisplay</Type>
+                                <Name>OrthoDisplay</Name>
+                            </Target>
+                            <Action>
+                                <SetSyncChannel>Red</SetSyncChannel>
+                            </Action>
+                        </Use>
+                        <Use>
+                            <Target>
+                                <Type>OrthoDisplay</Type>
+                                <Name>OrthoDisplay [1]</Name>
+                            </Target>
+                            <Action>
+                                <SetSyncChannel>Red</SetSyncChannel>
+                            </Action>
+                        </Use>
+                        <Use>
+                            <Target>
+                                <Type>OrthoDisplay</Type>
+                                <Name>OrthoDisplay [2]</Name>
+                            </Target>
+                            <Action>
+                                <SetSyncChannel>Red</SetSyncChannel>
+                            </Action>
+                        </Use>
+                        <New>
+                            <Target>
+                                <Type>ToolBox</Type>
+                                <Name>ToolBox</Name>
+                            </Target>
+                            <Create>
+                                <SetWindowPos>1429 524</SetWindowPos>
+                                <ToolName>Color Tool A</ToolName>
+                                <ToolVersion>1.11</ToolVersion>
+                                <ToolVersionDate>January 12 2015</ToolVersionDate>
+                                <ToolTargetDisplayID>1</ToolTargetDisplayID>
+                            </Create>
+                            <Action/>
+                        </New>
+                    </Action>
+                </New>
+            </Action>
+        </Use>
+    </ParameterSection>
+    <!-- generate 3DViews -->
+    <ParameterSection>
+        <Target>::</Target>
+        <Use>
+            <Current>
+                <Type>Project</Type>
+            </Current>
+            <Action>
+                <New>
+                    <Target>
+                        <Type>VolumeView</Type>
+                        <Name>VolumeView</Name>
+                    </Target>
+                    <Create>
+                        <General>
+                            <SetTransparencyIndex>20</SetTransparencyIndex>
+                            <SetEnableGridEtAl>1</SetEnableGridEtAl>
+                            <SetPreOrientation>Human</SetPreOrientation>
+                            <SetImageBuffer>1</SetImageBuffer>
+                        </General>
+                        <Axis>
+                            <SetFullAxis>XAXIS</SetFullAxis>
+                            <SetTitle>&lt;axis></SetTitle>
+                            <SetUnits>[mm]</SetUnits>
+                            <SetOffset>0</SetOffset>
+                            <SetScale>1</SetScale>
+                            <SetExtOffset>0</SetExtOffset>
+                            <SetExtScale>1.1108253029123953</SetExtScale>
+                            <SetAutoScale1>1</SetAutoScale1>
+                            <SetAutoScale2>1</SetAutoScale2>
+                            <SetExcessDecimal>0</SetExcessDecimal>
+                            <SetLog>0</SetLog>
+                            <SetMin>-6.42223</SetMin>
+                            <SetMax>166.422</SetMax>
+                            <SetTMajor>50</SetTMajor>
+                            <SetDeltaAxisLimitsMM>172.84422302246094</SetDeltaAxisLimitsMM>
+                        </Axis>
+                        <Axis>
+                            <SetFullAxis>YAXIS</SetFullAxis>
+                            <SetTitle>&lt;axis></SetTitle>
+                            <SetUnits>[mm]</SetUnits>
+                            <SetOffset>0</SetOffset>
+                            <SetScale>1</SetScale>
+                            <SetExtOffset>0</SetExtOffset>
+                            <SetExtScale>1.1108253029123953</SetExtScale>
+                            <SetAutoScale1>1</SetAutoScale1>
+                            <SetAutoScale2>1</SetAutoScale2>
+                            <SetExcessDecimal>0</SetExcessDecimal>
+                            <SetLog>0</SetLog>
+                            <SetMin>-6.42223</SetMin>
+                            <SetMax>166.422</SetMax>
+                            <SetTMajor>50</SetTMajor>
+                            <SetDeltaAxisLimitsMM>172.84422302246094</SetDeltaAxisLimitsMM>
+                        </Axis>
+                        <Axis>
+                            <SetFullAxis>ZAXIS</SetFullAxis>
+                            <SetTitle>&lt;axis></SetTitle>
+                            <SetUnits>[mm]</SetUnits>
+                            <SetOffset>0</SetOffset>
+                            <SetScale>1</SetScale>
+                            <SetExtOffset>0</SetExtOffset>
+                            <SetExtScale>1.1108253029123953</SetExtScale>
+                            <SetAutoScale1>1</SetAutoScale1>
+                            <SetAutoScale2>1</SetAutoScale2>
+                            <SetExcessDecimal>0</SetExcessDecimal>
+                            <SetLog>0</SetLog>
+                            <SetMin>9.57777</SetMin>
+                            <SetMax>182.422</SetMax>
+                            <SetTMajor>50</SetTMajor>
+                            <SetDeltaAxisLimitsMM>172.84422302246094</SetDeltaAxisLimitsMM>
+                        </Axis>
+                        <Camera>
+                            <SetXRotation>60.084</SetXRotation>
+                            <SetYRotation>20.3395</SetYRotation>
+                            <SetZoomLevel>100</SetZoomLevel>
+                            <SetTarget>0 0 0</SetTarget>
+                        </Camera>
+                        <Theme>
+                            <SetWindowColor>0.42833600366216523 0.42833600366216523 0.42833600366216523 1</SetWindowColor>
+                            <SetGridLineColor>0 0 0 1</SetGridLineColor>
+                            <SetLabelTextColor>0.35294117647058826 0.35294117647058826 0.35294117647058826 1</SetLabelTextColor>
+                            <SetFont>Lucida Grande,11,-1,5,50,0,0,0,0,0</SetFont>
+                        </Theme>
+                    </Create>
+                    <Action>
+                        <SetWindowPos>0 28 1527 939</SetWindowPos>
+                        <New>
+                            <Target>
+                                <Type>OpenGLVolTool</Type>
+                                <Name>OpenGLVolTool</Name>
+                            </Target>
+                            <Create>
+                                <SetWindowPos>0 250</SetWindowPos>
+                                <ToolName>Color Tool V</ToolName>
+                                <ToolVersion>1.00</ToolVersion>
+                                <ToolVersionDate>November 28 2016</ToolVersionDate>
+                                <ToolTargetDisplayID>0</ToolTargetDisplayID>
+                            </Create>
+                            <Action/>
+                        </New>
+                        <New>
+                            <Target>
+                                <Type>OpenGLVolTool</Type>
+                                <Name>OpenGLVolTool [1]</Name>
+                            </Target>
+                            <Create>
+                                <SetWindowPos>-320 274</SetWindowPos>
+                                <ToolName>Volume Properties</ToolName>
+                                <ToolVersion>1.00</ToolVersion>
+                                <ToolVersionDate>November 28 2016</ToolVersionDate>
+                                <ToolTargetDisplayID>0</ToolTargetDisplayID>
+                            </Create>
+                            <Action/>
+                        </New>
+                    </Action>
+                </New>
+            </Action>
+        </Use>
+    </ParameterSection>
+    <!-- generate LoadView -->
+    <ParameterSection>
+        <Target>::</Target>
+        <Use>
+            <Current>
+                <Type>Project</Type>
+            </Current>
+            <Action>
+                <New>
+                    <Unique>
+                        <Type>LoadView</Type>
+                    </Unique>
+                    <Create>
+                        <SetWindowPos>50 50</SetWindowPos>
+                    </Create>
+                    <Action>
+                        <SetWindowPos>50 50</SetWindowPos>
+                    </Action>
+                </New>
+            </Action>
+        </Use>
+    </ParameterSection>
+    <!-- optional MD5 signature to verify validity of this file -->
+    <MD5Signature>46B88AECBF84A7396817DC5AFEFC09B9</MD5Signature>
+</VinciXMLXchange>
